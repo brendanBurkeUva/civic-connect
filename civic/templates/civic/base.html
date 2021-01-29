@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Civic Connect</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/civic">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/civic/submit">Submit Template</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/civic/search">Search Templates</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/civic/find">Find Your Reps</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/civic/resources">Additional Resources</a>
+        </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="/civic/user">Your Submitted Templates</a>
+          </li>
+        {% endif %}
+        {% if user.is_superuser %}
+        <li class="nav-item">
+          <a class="nav-link" href="/civicconnectadmin">Site Administration</a>
+        </li>
+        {% endif %}
+        {% if user.is_authenticated %}
+          <li>
+            <a class="btn btn-primary" href="{% url 'logout' %}">Logout ({{ user.username }})</a>
+          </li>
+        {% else %}
+          <li>
+            <a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}">Login</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Civic Connect</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-8">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </body>
+<nav class="navbar fixed-bottom navbar-light bg-light">
+  <a class="navbar-brand" href="#">Full Stack Citizens, copyright 2020, CS 3240</a>
+</nav>
+<!-- Code adapted from Bootstrap example code
+/***************************************************************************************
+Title: Bootstrap Documentation
+Author: Bootstrap Team
+Date: 2020
+Code version: 4.0
+URL:  https://getbootstrap.com/docs/4.0/getting-started/introduction/
+Software License: MIT Licence
+***************************************************************************************/
+ -->
+</html>

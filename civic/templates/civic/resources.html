@@ -1,0 +1,171 @@
+{% extends 'civic/base.html' %}
+{% load bootstrap4 %}
+
+/***************************************************************************************
+*  REFERENCES
+*  Title: HTML Lists
+*  Author: WESchools
+*  URL: https://www.w3schools.com/html/html_lists.asp
+*
+*  Title: How To Collapsibles/Accordions
+*  Author: WESchools
+*  URL: https://www.w3schools.com/howto/howto_js_accordion.asp*
+*
+***************************************************************************************/
+
+{% block content %}
+<h1>More Ways to Get Involved!</h1>
+In order to be the most active and involved as you can, here's some additional resources to help! This page contains a list of petitions, articles, and information on other organizations.
+<br><br>Note that these links will take you to external sites, not owned or operated by Civic Connect or The Full Stack Citizens.
+
+<script>
+  $(".collapse").collapse()
+</script>
+
+
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+</style>
+</head>
+<body>
+
+<h2> </h2>
+
+<button class="accordion">Environmental Conservation</button>
+<div class="panel">
+  <p>Look at <a href="https://www.change.org/t/climate-change-3">Change.org</a> for a list of good petitions to sign, and to see how many people are supporting these causes.
+        Also see the organizations below:
+        <ul>
+        <li><a href="https://www.rainforestcoalition.org/">Coalition for Rainforest Nations</a></li>
+        <li><a href="https://www.catf.us/">Clean Air Task Force</a></li>
+        <li><a href="https://rainforestfoundation.org/">Rainforest Foundation US</a></li>
+        </ul>
+</div>
+
+<button class="accordion">Racial Justice</button>
+<div class="panel">
+  <p>The <a href="https://www.washingtonpost.com/nation/2020/06/08/understanding-racism-inequality-america/?arc404=true">Washington Post</a> has good resources to educate and understand the long history of systemic racism in the United States.
+        Look at <a href="https://www.change.org/t/racial-justice-4">Change.org</a> for a list of good petitions to sign, and to see how many people are supporting these causes.
+        Here are some good additional organizations to get involved with:
+        <ul>
+        <li><a href="https://colorofchange.org/">Color of Change</a></li>
+        <li><a href="https://www.naacp.org/">National Association for the Advancement of Colored People</a></li>
+        <li><a href="https://blacklivesmatter.com/">Black Lives Matter</a></li>
+        </ul>
+</div>
+
+<button class="accordion">Gun Reform</button>
+<div class="panel">
+  <p><a href="https://www.nytimes.com/topic/subject/guns-and-gun-control">The New York Times</a> also has a good section on articles regarding gun reform.
+        See <a href="https://www.change.org/p/congress-pass-common-sense-gun-control">Change.org</a> for a petition calling for common sense gun laws.
+        The organization <a href="https://momsdemandaction.org/">Moms Demand Action for Gun Sense in America</a> is a grass-roots organization of Moms demanding action following the Sandy Hook Elementary School shooting in 2012.
+        Another good organization is the <a href="https://www.bradyunited.org/">Brady Campaign to Prevent Gun Violence</a> works to pass and enforce public policy, laws and legislation through grass-roots activism.
+        Also see the organizations below:
+        <ul>
+        <li><a href="https://www.csgv.org/">Coalition to Stop Gun Violence</a></li>
+        <li><a href="https://everytown.org/">Everytown for Gun Safety</a></li>
+        <li><a href="http://www.gunfreekids.org/about/">Gun Free Kids</a></li>
+        </ul>
+</div>
+
+<button class="accordion">Health Care Reform</button>
+<div class="panel">
+  <p>The <a href="https://www.nytimes.com/topic/subject/health-care-reform">New York Times</a> has good articles on healthcare reform in the United States.
+        Look at <a href="https://www.change.org/p/healthcare-reform-with-guaranteed-choice">Change.org</a> for a list of good petitions to sign, and to see how many people are supporting these causes.
+        Here are some good additional organizations to get involved with:
+        <ul>
+        <li><a href="https://nchc.org/">National Coalition on Health Care</a></li>
+        <li><a href="https://www.nursingworld.org/">American Nurses Association</a></li>
+        <li><a href="https://familiesusa.org/">Families USA</a></li>
+        </ul>
+</div>
+
+<button class="accordion">Student Debt Crisis</button>
+<div class="panel">
+  <p>Currently, the United States has over 1.7 trillion dollars held in student debt. The <a href="https://www.nytimes.com/topic/subject/student-loans">New York Times</a> has good articles on the student debt crisis in the United States.
+        Look at <a href="https://www.change.org/t/student-loans-en-us">Change.org</a> for a list of good petitions to sign, and to see how many people are supporting this cause.
+        Here are some good additional organizations to get involved with:
+        <ul>
+        <li><a href="https://studentdebtcrisis.org/">Student Debt Crisis</a></li>
+        <li><a href="https://www.aft.org/highered/student-debt-crisis">American Federation of Teachers</a></li>
+        <li><a href="http://reclaimtheamericandream.org/organizations-debt/">Reclaim the American Dream</a></li>
+        </ul>
+</div>
+
+<button class="accordion">Opioid Crisis</button>
+<div class="panel">
+  <p>Over 400,000 people have died in the United States over the last two decades due to opioid overdoes.
+    The <a href="https://www.washingtonpost.com/national/2019/07/20/opioid-files/">Washington Post</a> has good articles on this epidemic, and follows its history back to the 1990s.
+    Look at <a href="https://www.change.org/t/opioid-crisis-en-us">Change.org</a> for a list of good petitions to sign, and to see how many people are supporting this cause.
+    These organizations are fighting to make a change:
+    <ul>
+    <li><a href="https://nam.edu/">The National Academy of Medicine</a></li>
+    <li><a href="https://www.hrsa.gov/rural-health/index.html">Federal Office of Rural Health Policy</a></li>
+    <li><a href="https://www.ahrq.gov/">Agency for Healthcare Research and Quality</a></li>
+    </ul>
+</div>
+
+<button class="accordion">Vaccines</button>
+<div class="panel">
+  <p>The <a href="https://www.nytimes.com/2019/09/23/health/anti-vaccination-movement-us.html">New York Times</a> has good articles on the vaccination controversy in the United States.
+        Look at <a href="https://www.change.org/t/vaccines">Change.org</a> for a list of good petitions to sign, and to see how many people are supporting this cause.
+        Here are some good additional organizations to get involved with:
+        <ul>
+        <li><a href="https://vaccinateyourfamily.org/">Vaccinate Your Family</a></li>
+        <li><a href="https://www.voicesforvaccines.org/">Voices for Vaccines</a></li>
+        <li><a href="https://www.gavi.org/">Gavi</a></li>
+        </ul>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+</body>
+<br>
+<br>
+<br>
+
+
+
+
+
+{% endblock %}

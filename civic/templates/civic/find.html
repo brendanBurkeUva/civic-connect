@@ -1,0 +1,99 @@
+{% extends 'civic/base.html' %}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+{% block content %}
+<h1>Find Your Representatives!</h1>
+To utilize our templates, you'll need someone to send them to! This page contains a list of tools that can help you find out who represents you in government, and how to get in contact with them.
+<br><br>
+Enter your address in the form 'Street Address, City, State, (optional) Zip'.
+<br>
+For example, if you live in the White House, enter '1600 Pennsylvania Avenue NW, Washington, DC, 20500'.
+<br><br>
+<form method="post" class="form-inline">
+  {% csrf_token %}
+  {{ form|crispy }}
+  {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  {% endbuttons %}
+</form>
+<br>
+{% if resp != "" %}
+  <h1>Reps for {{addr}}</h1>
+  <br>
+  {% for k, v in resp.items %}
+    {% if k == "officials" %}
+      {% for n in v %}
+        {% for a, b in n.items %}
+          {% if a == "name" %}
+            <h2>{{b}}</h2>
+          {% elif a == "address" %}
+            <br>Address:
+            {% for x in b %}
+              {% for xk, xv in x.items %}
+                {% if xk != "zip" %}
+                  {{xv}},
+                {% else %}
+                  {{xv}}
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+            <br>
+          {% elif a == "party" %}
+            <br>Party: {{b}}<br>
+          {% elif a == "phones" %}
+            <br>Phone number(s):
+              {% for x in b %}
+                {{x}},
+              {% endfor %}
+            <br>
+          {% elif a == "urls" %}
+            <br>Website(s):
+            {% for x in b %}
+              <a href="{{x}}">{{x}}</a>,
+            {% endfor %}
+            <br>
+          {% elif a == "photoUrl" %}
+            <br>Photo: <a href="{{b}}">Original Size</a><br>
+            <img src="{{b}}" width="200" height="200" /><br>
+          {% elif a == "emails" %}
+            <br>Email(s):
+            {% for x in b %}
+              {{x}},
+            {% endfor %}
+            <br>
+          {% elif a == "channels" %}
+            <br>Social Media:
+            {% for x in b %}
+              {% for xk, xv in x.items %}
+                {% if xk == "type" %}
+                  {{xv}}:
+                {% else %}
+                  {{xv}},
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+            <br>
+          {% endif %}
+        {% endfor %}
+        <br>
+      {% endfor %}
+    {% elif k == "error" %}
+      Error parsing address, make sure you used the format above.
+      <br>
+      If it still doesn't work with your address, try another <a href="/civic/rep">representative finder resource</a>.
+    {% endif %}
+  {% endfor %}
+{% endif %}
+<br><br>
+Search powered by <a href="https://developers.google.com/civic-information">Google's Civic Information API</a>.
+<br>
+We do not store your address.
+<br><br>
+Not in the USA? Look at our additional <a href="/civic/rep">representative finder resources</a>.
+<br><br>
+{% endblock %}

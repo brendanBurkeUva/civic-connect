@@ -1,0 +1,27 @@
+{% extends 'civic/base.html' %}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+
+{% block content %}
+<h1>Submit a new template!</h1>
+{% if user.is_authenticated %}
+Submitting as {{ user.username }}
+{% else %}
+You must be logged in to submit a template.
+{% endif %}
+
+<form method="post" class="form-inline">
+  {% csrf_token %}
+  {{ form|crispy }}
+  {% if user.is_authenticated %}
+  {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  {% endbuttons %}
+  {% endif %}
+</form>
+{% endblock %}

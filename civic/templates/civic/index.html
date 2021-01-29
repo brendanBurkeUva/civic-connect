@@ -1,0 +1,28 @@
+{% extends 'civic/base.html' %}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  {% if user.first_name == "" %}
+    <h1> Welcome back, {{user.username}}!</h1>
+  {% else %}
+    <h1> Welcome back, {{user.first_name}}!</h1>
+  {% endif %}
+{% endif %}
+<h1> Welcome to Civic Connct, your home for all email and letter template needs!</h1>
+<br><br>
+With this site, you can submit or use email templates for issues that matter to you!
+<br>
+To submit a template, go <a href="/submit">to the submission page</a>.
+{% if user.is_authenticated %}
+ After submission, check the status of your template <a href="/user">here</a>.
+{% else %}
+ You must be signed in to use this feature.
+{% endif %}
+<br>
+To view approved templates, go <a href="/search">to the templates page</a>.
+<br>
+With the templates provided by our site, you'll still need someone to send them to!
+To do that, visit our <a href="/find">representative finder page</a>.
+<br>
+{% endblock %}

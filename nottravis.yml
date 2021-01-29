@@ -1,0 +1,23 @@
+language: python
+python:
+- '3.7'
+services:
+  - postgresql
+install:
+- pip install -r requirements-travis.txt
+script:
+- psql -c "CREATE DATABASE civicconnect;" -U postgres
+- psql -c "CREATE USER django WITH PASSWORD 'password';" -U postgres
+- psql -c "ALTER USER django CREATEDB;" -U postgres
+- psql -c "ALTER USER django Superuser" -U postgres
+- psql -c "GRANT ALL PRIVILEGES ON DATABASE civicconnect TO django;" -U postgres
+- python manage.py makemigrations
+- python manage.py migrate
+- python manage.py test
+deploy:
+  provider: heroku
+  api_key:
+    secure: ZqcaV/yRV3QmDGfaP7tPYlu6FXIdpRQL0wMrudx0ehSua+yYCOuPqGzKONyjYvlni2HZddzr4MWYzBDKNorO8ipH5AEGACg+lgbdUsKrSSCeiqZV0qiYjjGpeSOuN8JcIFs+OgPR5V179oYw8xKSlGl0fOPiJElX0NiZyRtGux724D9iaOsuqD41acQ6BKfTccuekMKFqtTrgocwkqJ/pKZ0WfJbbfl5s7St4oJ1TZ+50S62j7qSfCKTs3VNqYTdsvmd9kQI2NZR+cB2KywR1iAsvtcZSgdpW2hD2WZG1HnJaztoWLF41FDIAIcX6ZX1ZXafJSvtqXvnXzzEiHF0qLV6E8pjDMqsYpEC6jePkaniz4HnbRWKnVCUKQtF9bi9FjPelluZhRSOCZN+KFubZen8nZktDNltka/93XAfHZ+sR2IuPjIWViB87ORyWRW4CWl08WGOENU7kbLDhWWi3yvfi+NxIMkUu9qQL981DZQte0td/ebns76lu01T4xsqJYSF5ITuImDjZGWLAopQgs5dtSe6zQ8YVDsiGa4HEhNlzdrZNf0b7eTkmsxkMGzlOAm2VqYWFSD+m/7GNAszH2d3B0Q0lLiXkDNy6nwjUF+ToieAl/NrOeOhG2moILzjRO8e5QfYAmEFw6LzHqW963Q4u7nwRclZmi2lAEMvJqE=
+  app: civic-connect-team-2-30
+  on:
+    repo: uva-cs3240-f20/project-2-30

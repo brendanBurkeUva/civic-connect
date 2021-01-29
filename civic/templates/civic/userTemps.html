@@ -1,0 +1,32 @@
+{% extends 'civic/base.html' %}
+
+{% block content %}
+<br><br>
+<h1>View Templates</h1>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Category</th>
+      <th scope="col">Template</th>
+      <th scope="col">Approved?</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for tmp in allTemps %}
+    {% if tmp.sender == user.username %}
+    <tr>
+      <td>{{ tmp.category }}</td>
+      <td>{{ tmp.letter }}</td>
+      {% if tmp.approved is True %}
+        <td>Yes!</td>
+      {% else %}
+        <td>No.</td>
+      {% endif %}
+    </tr>
+    {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
+<br><br>
+If your template has not been approved, it doesn't necessarily mean it's been denied, a moderator may not have gotten to it yet.
+{% endblock %}

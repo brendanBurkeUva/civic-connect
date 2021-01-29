@@ -1,0 +1,28 @@
+{% extends 'civic/base.html' %}
+
+{% block content %}
+<br><br>
+<h1>View Templates</h1>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Category</th>
+      <th scope="col">Template</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for tmp in allTemps %}
+    {% if tmp.approved is True %}
+    <tr>
+      <td>{{ tmp.category }}</td>
+      <td>{{ tmp.letter }}</td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
+<br><br>
+{% if user.is_authenticated %}
+Don't see a template you submitted? <a href="/civic/user">Check its approval status</a>.
+{% endif %}
+{% endblock %}

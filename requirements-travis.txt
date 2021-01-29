@@ -1,0 +1,6 @@
+Django
+django-heroku
+gunicorn
+django-bootstrap4
+django-crispy-forms
+social-auth-app-django
